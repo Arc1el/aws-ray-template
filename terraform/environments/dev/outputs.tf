@@ -36,4 +36,14 @@ output "internet_gateway_id" {
 output "s3_endpoint_id" {
   description = "S3 VPC Endpoint ID"
   value       = module.vpc.s3_endpoint_id
+}
+
+output "ray_head_sg_id" {
+  description = "ID of the Ray head node security group"
+  value       = module.security_group.ray_head_sg_id
+}
+
+output "ray_worker_sg_id" {
+  description = "ID of the Ray worker node security group"
+  value       = module.security_group.ray_worker_sg_id
 } 

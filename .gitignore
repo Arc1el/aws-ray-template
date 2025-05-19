@@ -226,3 +226,5 @@ pip-selfcheck.json
 # End of https://www.toptal.com/developers/gitignore/api/terraform,python,venv
 
 outputs.json
+
+*.pem

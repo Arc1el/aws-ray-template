@@ -18,3 +18,20 @@ module "subnet" {
   private_route_table_id = module.vpc.private_route_table_id
   public_route_table_id  = module.vpc.public_route_table_id
 }
+
+module "security_group" {
+  source = "../../modules/security_group"
+  vpc_id = module.vpc.vpc_id
+}
+
+module "key_pair" {
+  source = "../../modules/key_pair"
+}
+
+module "bastion" {
+  source     = "../../modules/ec2"
+  vpc_id     = module.vpc.vpc_id
+  subnet_id  = module.subnet.public_subnet_ids[0]
+  ami        = "ami-0d5bb3742db8fc264"
+  key_name   = module.key_pair.key_name
+}
